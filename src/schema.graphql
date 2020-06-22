@@ -1,0 +1,68 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Me {
+  systemAdmin: Boolean
+  facilityAdmin: Boolean
+  id: Int
+}
+
+type Mutation {
+  login(password: String!, username: String!): String
+  updateUserInfo(userId: ID!, updateItems: UserInfoInput): Int
+}
+
+type User {
+  id: ID!
+  firstName: String
+  lastName: String
+  age: Int
+}
+
+type Query {
+  getMe: Me
+  getStaffs: [Staff]
+  user: [User]
+}
+
+type Staff {
+  systemAdmin: Boolean
+  facilityAdmin: Boolean
+  facilityId: Int
+  firstName: String
+  id: ID!
+  lastName: String
+}
+
+type Tokens {
+  accessToken: String
+}
+
+type UserInfoUpdate {
+  id: ID!
+  bloodPressure: Int
+  bodyTemperature: Float
+  pulse: Int
+}
+
+input UserInfoInput {
+  bloodPressure: Int
+  bodyTemperature: Float
+  pulse: Int
+}
+
+type Subscription {
+  userInfoUpdated: UserInfoUpdate
+}
+
+enum CacheControlScope {
+  PRIVATE
+  PUBLIC
+}
+
+"The `Upload` scalar type represents a file upload."
+scalar Upload
